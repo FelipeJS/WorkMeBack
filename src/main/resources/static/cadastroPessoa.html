@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script>
+        	angular.module("trabalho", []);
+        	
+        	angular.module("trabalho").controller("pessoaCtrl", function ($scope, $http) {
+        		$scope.salvar = function (pessoa) {
+        			$http.post("http://localhost:9090/pessoa/salvar", pessoa).success(function (resultadoDoResponse) {
+        				$scope.pessoa = resultadoDoResponse;
+        				alert("Sucesso");
+        			});
+        		};		
+        	});
+        </script>
+    </head>
+    <body ng-app="trabalho">
+        
+        <form ng-controller="pessoaCtrl">
+        	<input type="text" placeholder="cpf/cnpj" ng-model="pessoa.documento">
+        	<input type="text" placeholder="nome" ng-model="pessoa.nome">
+        	<input type="text" placeholder="fantasia" ng-model="pessoa.fantasia">
+        	<input type="text" placeholder="telefone" ng-model="pessoa.telefone">
+        	<input type="text" placeholder="endereco" ng-model="pessoa.endereco">
+        	<input type="text" placeholder="bairro" ng-model="pessoa.bairro">
+        	<input type="text" placeholder="cidade" ng-model="pessoa.cidade">
+        	<input type="text" placeholder="estado" ng-model="pessoa.estado">
+        	<input type="email" placeholder="email" ng-model="pessoa.email">
+        	<input type="password" placeholder="senha" ng-model="pessoa.senha">
+        	<button ng-click="salvar(pessoa)">Salvar</button>
+        </form>
+        
+    </body>
+</html>
