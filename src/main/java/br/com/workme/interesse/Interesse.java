@@ -18,14 +18,13 @@ public class Interesse implements Serializable{
 	private static final long serialVersionUID = 2468835097927775601L;
 
 	@Id
-	@ManyToOne
-	@JoinColumn(name = "cd_pessoa")
-	private Pessoa pessoa;
-
-	@Id
 	@Column(name = "cd_interesse")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cdInteresse;
+	
+	@ManyToOne
+	@JoinColumn(name = "cd_pessoa", referencedColumnName = "cd_pessoa")
+	private Pessoa pessoa;
 
 	private String descricao;
 

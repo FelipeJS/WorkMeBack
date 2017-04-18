@@ -19,17 +19,13 @@ public class ComentarioSolicitacao implements Serializable {
 	private static final long serialVersionUID = -1569393899885639699L;
 
 	@Id
-	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "cd_pessoa", referencedColumnName = "cd_pessoa"),
-			@JoinColumn(name = "cd_servico", referencedColumnName = "cd_servico"),
-			@JoinColumn(name = "cd_solicitante", referencedColumnName = "cd_solicitante"),
-			@JoinColumn(name = "cd_solicitacao", referencedColumnName = "cd_solicitacao") })
-	private Solicitacao solicitacao;
-
-	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cd_comentario_solicitacao")
 	private Long cdComentarioSolicitacao;
+	
+	@ManyToOne
+	@JoinColumn(name = "cd_solicitacao", referencedColumnName = "cd_solicitacao")
+	private Solicitacao solicitacao;
 
 	private String descricao;
 

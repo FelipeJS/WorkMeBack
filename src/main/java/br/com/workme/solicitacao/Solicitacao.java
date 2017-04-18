@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 import br.com.workme.pessoa.Pessoa;
@@ -19,21 +18,19 @@ import br.com.workme.servico.Servico;
 public class Solicitacao implements Serializable {
 
 	private static final long serialVersionUID = -3844635838578163136L;
-
-	@Id
-	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "cd_pessoa"), @JoinColumn(name = "cd_servico") })
-	private Servico servico;
-
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "cd_solicitante")
-	private Pessoa solicitante;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cd_solicitacao")
 	private Long cdSolicitacao;
+	
+	@ManyToOne
+	@JoinColumn(name = "cd_servico", referencedColumnName = "cd_servico")
+	private Servico servico;
+
+	@ManyToOne
+	@JoinColumn(name = "cd_solicitante", referencedColumnName = "cd_pessoa")
+	private Pessoa solicitante;
 
 	@Column(name = "dh_solicitacao")
 	private Calendar dhSolicitacao;
@@ -44,6 +41,14 @@ public class Solicitacao implements Serializable {
 
 	@Column(name = "motivo_recusado")
 	private String motivoRecusado;
+
+	public Long getCdSolicitacao() {
+		return cdSolicitacao;
+	}
+
+	public void setCdSolicitacao(Long cdSolicitacao) {
+		this.cdSolicitacao = cdSolicitacao;
+	}
 
 	public Servico getServico() {
 		return servico;
@@ -59,14 +64,6 @@ public class Solicitacao implements Serializable {
 
 	public void setSolicitante(Pessoa solicitante) {
 		this.solicitante = solicitante;
-	}
-
-	public Long getCdSolicitacao() {
-		return cdSolicitacao;
-	}
-
-	public void setCdSolicitacao(Long cdSolicitacao) {
-		this.cdSolicitacao = cdSolicitacao;
 	}
 
 	public Calendar getDhSolicitacao() {
@@ -100,5 +97,5 @@ public class Solicitacao implements Serializable {
 	public void setMotivoRecusado(String motivoRecusado) {
 		this.motivoRecusado = motivoRecusado;
 	}
-
+	
 }

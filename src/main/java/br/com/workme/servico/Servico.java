@@ -18,15 +18,14 @@ public class Servico implements Serializable {
 	private static final long serialVersionUID = -5508873860680796491L;
 
 	@Id
-	@ManyToOne
-	@JoinColumn(name = "cd_pessoa")
-	private Pessoa pessoa;
-
-	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cd_servico")
 	private Long cdServico;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "cd_pessoa", referencedColumnName = "cd_pessoa")
+	private Pessoa pessoa;
+	
 	private String nome;
 
 	private String categoria;

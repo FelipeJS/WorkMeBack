@@ -18,19 +18,17 @@ public class ComentarioPessoa implements Serializable {
 	private static final long serialVersionUID = -8312107080075054554L;
 
 	@Id
-	@ManyToOne
-	@JoinColumn(name = "cd_pessoa")
-	private Pessoa pessoa;
-
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "cd_pessoa")
-	private Pessoa pessoaComentada;
-
-	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cd_comentario_pessoa")
 	private Long cdComentarioPessoa;
+	
+	@ManyToOne
+	@JoinColumn(name = "cd_pessoa", referencedColumnName = "cd_pessoa")
+	private Pessoa pessoa;
+
+	@ManyToOne
+	@JoinColumn(name = "cd_pessoa_comentada", referencedColumnName = "cd_pessoa")
+	private Pessoa pessoaComentada;
 
 	private String descricao;
 
