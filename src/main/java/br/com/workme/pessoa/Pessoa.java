@@ -32,19 +32,24 @@ public class Pessoa implements Serializable {
 
 	private String bairro;
 
+	@Column(nullable = false)
 	private String cidade;
 
+	@Column(nullable = false)
 	private String estado;
 
 	@Column(unique = true)
 	private String email;
 
+	@Column(nullable = false)
 	private String senha;
 
 	private String tipo;
 
 	@Column(name = "sn_ativo")
 	private Boolean snAtivo;
+
+	private String categoria;
 
 	public Long getCdPessoa() {
 		return cdPessoa;
@@ -150,4 +155,26 @@ public class Pessoa implements Serializable {
 		this.snAtivo = snAtivo;
 	}
 
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }

@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 import br.com.workme.solicitacao.Solicitacao;
@@ -22,7 +21,7 @@ public class ComentarioSolicitacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cd_comentario_solicitacao")
 	private Long cdComentarioSolicitacao;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cd_solicitacao", referencedColumnName = "cd_solicitacao")
 	private Solicitacao solicitacao;
